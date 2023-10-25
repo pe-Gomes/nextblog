@@ -5,4 +5,5 @@ export const Container = styled.div`
   height: 100vh;
 
   ${({ theme }) => theme.FONTS.NUNITO}
+  color: ${({ theme }) => theme.COLORS.base_text};
 `

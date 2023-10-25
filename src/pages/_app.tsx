@@ -10,9 +10,11 @@ const nunito = Nunito({ subsets: ['latin'], variable: '--font-nunito' })
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <div className={nunito.variable}>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </div>
   )
 }

@@ -1,4 +1,6 @@
-export const theme = {
+import { DefaultTheme } from 'styled-components/dist/types'
+
+export const theme: DefaultTheme = {
   COLORS: {
     blue: '#3294f8',
     base_title: '#E7edf4',

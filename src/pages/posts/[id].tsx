@@ -1,7 +1,7 @@
 import { Layout } from '@/components/Layout'
 import { Container } from './styles'
 
-export function Post() {
+export default function Post() {
   return (
     <Layout>
       <Container>

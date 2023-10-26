@@ -2,9 +2,17 @@ import Link from 'next/link'
 import { Container } from './styles'
 import { IPost } from '@/types/post'
 
-interface Props extends IPost {}
+interface Props extends IPost {
+  formattedDate: string
+}
 
-export function Card({ title, description, content, id, created_at }: Props) {
+export function Card({
+  title,
+  description,
+  content,
+  id,
+  formattedDate,
+}: Props) {
   return (
     <Container>
       <div className="noise" />
@@ -26,7 +34,7 @@ export function Card({ title, description, content, id, created_at }: Props) {
         <h2>{title}</h2>
         {description && <h3>{description}</h3>}
         <p>{content}</p>
-        <span>{created_at.toString()}</span>
+        <span>{formattedDate}</span>
       </Link>
     </Container>
   )

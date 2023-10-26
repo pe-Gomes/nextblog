@@ -5,12 +5,17 @@ import { IPost } from '@/types/post'
 import { Container, CardList } from '@/styles/homeStyle'
 import { Layout } from '@/components/Layout'
 import { Card } from '@/components/Card'
+import { format } from 'date-fns'
 
 interface Props {
   posts: IPost[]
 }
 
 export default function Home({ posts }: Props) {
+  const formattedDate = posts.map((post) => {
+    const date = new Date(post.created_at!)
+    return format(date, 'MMMM do yyyy, h:mm:ss a')
+  })
   return (
     <Layout>
       <Container>
@@ -18,14 +23,14 @@ export default function Home({ posts }: Props) {
         <CardList>
           <ul>
             {posts &&
-              posts.map((post) => (
+              posts.map((post, i) => (
                 <Card
                   key={post.id}
                   title={post.title}
                   description={post.description}
-                  content={post.content.slice(0, 25).concat('...')}
+                  content={post.content!.slice(0, 25).concat('...')}
                   id={post.id}
-                  created_at={post.created_at}
+                  formattedDate={formattedDate[i]}
                 />
               ))}
           </ul>

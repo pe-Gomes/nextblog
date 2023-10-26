@@ -1,12 +1,27 @@
-import { Layout } from '@/layout'
+import { CardList } from '@/components/CardList'
+import { Layout } from '@/components/Layout'
+import { getAll } from '@/services/requests'
 import { Container } from '@/styles/homeStyle'
+import { IPost } from '@/types/post'
+import { GetStaticProps } from 'next'
 
-export default function Home() {
+interface Props {
+  posts: IPost[]
+}
+
+export default function Home({ posts }: Props) {
+  console.log(posts)
   return (
     <Layout>
       <Container>
-        <h1>Hello, World</h1>
+        <CardList />
       </Container>
     </Layout>
   )
 }
+
+export const getStaticProps = (async () => {
+  const posts = await getAll()
+
+  return { props: { posts } }
+}) satisfies GetStaticProps<{ posts: IPost[] }>

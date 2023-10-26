@@ -1,7 +1,7 @@
-import { CardList } from '@/components/CardList'
+import { Card } from '@/components/Card'
 import { Layout } from '@/components/Layout'
 import { getAll } from '@/services/requests'
-import { Container } from '@/styles/homeStyle'
+import { Container, CardList } from '@/styles/homeStyle'
 import { IPost } from '@/types/post'
 import { GetStaticProps } from 'next'
 
@@ -10,16 +10,28 @@ interface Props {
 }
 
 export default function Home({ posts }: Props) {
-  console.log(posts)
   return (
     <Layout>
       <Container>
-        <CardList />
+        <CardList>
+          <ul>
+            {posts &&
+              posts.map((post) => (
+                <Card
+                  key={post.id}
+                  title={post.title}
+                  description={post.description}
+                  content={post.content}
+                  id={post.id}
+                  created_at={post.created_at}
+                />
+              ))}
+          </ul>
+        </CardList>
       </Container>
     </Layout>
   )
 }
-
 export const getStaticProps = (async () => {
   const posts = await getAll()
 

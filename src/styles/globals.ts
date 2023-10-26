@@ -11,4 +11,13 @@ export const GlobalStyle = createGlobalStyle`
     background: ${({ theme }) => theme.COLORS.base_background};
   }
 
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  li  {
+    list-style: none;
+  }
+
 `
